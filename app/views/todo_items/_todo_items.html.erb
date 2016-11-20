@@ -1,0 +1,7 @@
+<div class="todo_item">
+  <div>
+    <%= content_tag :span #{todo_item.title}, class: "todo-item-title" %>
+    <%= <%= link_to "Delete Todo Item", todo_list_todo_item_path(@todo_list, @todo_item) %>
+  </div>
+  <div><%= simple_format todo_item.title %></div>
+</div>
