@@ -1,24 +1,26 @@
 <p id="notice"><%= notice %></p>
+<table class="table">
+  <thead>
+  <tr>
+    <th>Title</th>
+    <th>Due date</th>
+    <th>Description</th>
+    <th>Completed</th>
+    <th colspan="2"></th>
+  </tr>
+  </thead>
 
-<p>
-  <strong>Title:</strong>
-  <%= @todo_item.title %>
-</p>
+  <tbody>
+  <tr>
+    <td><%= @todo_item.title %></td>
+    <td><%= @todo_item.due_date %></td>
+    <td><%= @todo_item.description %></td>
+    <td><%= @todo_item.completed %></td>
+  </tr>
+  </tbody>
+</table>
 
-<p>
-  <strong>Due date:</strong>
-  <%= @todo_item.due_date %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @todo_item.description %>
-</p>
-
-<p>
-  <strong>Completed:</strong>
-  <%= @todo_item.completed %>
-</p>
 
 <%= link_to 'Edit', edit_todo_list_todo_item_path(@todo_list, @todo_item) %>
 <%= link_to 'Back', todo_list_path(@todo_list) %>
+
