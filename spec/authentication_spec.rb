@@ -1,7 +1,7 @@
 require_relative '../config/environment'
 require 'rails_helper'
 
-feature "Module 4 Authentication Test" do
+feature "Authentication Test" do
 
     before :all do
         $continue = true
@@ -27,7 +27,7 @@ feature "Module 4 Authentication Test" do
     let ( :tl_id ) { TodoList.all.sample.id }
     let ( :item_id ) { TodoList.find(tl_id).todo_items.sample.id }
 
-    context "rq11" do
+    context "when not logged in" do
 
         scenario "When not logged in only accessible page is login page" do
             visit(root_path)
@@ -49,7 +49,7 @@ feature "Module 4 Authentication Test" do
         end
     end
 
-    context "rq12" do
+    context "when logged in" do
         scenario "List summary page has only lists for logged in user" do
             user = User.where(username: "rich").first
             userLists = user.authenticate("123abc").todo_lists

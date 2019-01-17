@@ -18,7 +18,7 @@ describe "Module #4: Navigation Tests", :type => :routing do
         end
     end
 
-    context "rq04" do 
+    context "TodoList" do
         scenario "TodoList scaffolding was generated and it was set as root path" do 
             visit (root_path) 
             expect(page.status_code).to eq(200)
@@ -29,7 +29,7 @@ describe "Module #4: Navigation Tests", :type => :routing do
         end
     end
 
-    context "rq07" do        
+    context "Authenticate" do
     
         before :all do    
             TodoItem.destroy_all

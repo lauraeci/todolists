@@ -29,7 +29,7 @@ feature "Module 4 End-2-End Test" do
     end
 
 
-    context "rq14" do
+    context "todoList and TodoItem" do
         let (:user) { User.where(username: "rich").first }
         let (:userLists) { user.authenticate("123abc").todo_lists }
         let (:totalLists) { userLists.count }
