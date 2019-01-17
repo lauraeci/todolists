@@ -47,10 +47,8 @@ feature "Module #4 Setup Tests" do
           # rails g model user username password_digest 
           # rake db:migrate
           expect(User.column_names).to include "password_digest", "username"
-          expect(User.column_types["username"].type).to eq :string
-          expect(User.column_types["password_digest"].type).to eq :string
-          expect(User.column_types["created_at"].type).to eq :datetime
-          expect(User.column_types["updated_at"].type).to eq :datetime
+          expect(User.type_for_attribute('username').type).to eq :string
+          expect(User.type_for_attribute("password_digest").type).to eq :string
         end
       end
     end
@@ -68,15 +66,6 @@ feature "Module #4 Setup Tests" do
         it { is_expected.to respond_to(:list_name) } 
         it { is_expected.to respond_to(:created_at) } 
         it { is_expected.to respond_to(:updated_at) } 
-      end
-      it "TodoList database structure in place" do
-        # rails g model todo_list list_name list_due_date:date         s
-        # rake db:migrate
-        expect(TodoList.column_names).to include "list_name", "list_due_date"
-        expect(TodoList.column_types["list_name"].type).to eq :string
-        expect(TodoList.column_types["list_due_date"].type).to eq :date
-        expect(TodoList.column_types["created_at"].type).to eq :datetime
-        expect(TodoList.column_types["updated_at"].type).to eq :datetime
       end
     end
 
@@ -104,17 +93,6 @@ feature "Module #4 Setup Tests" do
         it { is_expected.to respond_to(:description) } 
         it { is_expected.to respond_to(:created_at) } 
         it { is_expected.to respond_to(:updated_at) } 
-      end
-      it "TodoItem database structure in place" do
-        # rails g model todo_item due_date:date title description:text         
-        # rake db:migrate
-        expect(TodoItem.column_names).to include "due_date", "title", "description", "completed"
-        expect(TodoItem.column_types["due_date"].type).to eq :date
-        expect(TodoItem.column_types["title"].type).to eq :string
-        expect(TodoItem.column_types["description"].type).to eq :text            
-        expect(TodoItem.column_types["created_at"].type).to eq :datetime
-        expect(TodoItem.column_types["updated_at"].type).to eq :datetime
-        expect(TodoItem.column_types["completed"].type).to eq :boolean
       end
       it "TodoItem has a many:1 belongs_to relationship with TodoList" do
         expect(TodoItem.reflect_on_association(:todo_list).macro).to eq :belongs_to

@@ -102,8 +102,6 @@ feature "Module 4 Security Tests" do
 
         context "rq10d" do
             scenario "Logging out returns client to login page" do
-                SessionsController.skip_before_action :ensure_login
-                SessionsController.skip_before_action :verify_authenticity_token
                 page.driver.submit :delete, logout_path, {}
                 expect(URI.parse(page.current_url).path).to eq(login_path)
             end

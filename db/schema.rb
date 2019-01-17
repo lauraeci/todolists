@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160401152204) do
+ActiveRecord::Schema.define(version: 2019_01_17_021644) do
 
   create_table "binary_trees", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -19,44 +18,41 @@ ActiveRecord::Schema.define(version: 20160401152204) do
   end
 
   create_table "profiles", force: :cascade do |t|
-    t.string   "gender"
-    t.integer  "birth_year"
-    t.string   "first_name"
-    t.string   "last_name"
+    t.string "gender"
+    t.integer "birth_year"
+    t.string "first_name"
+    t.string "last_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "user_id"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_profiles_on_user_id"
   end
-
-  add_index "profiles", ["user_id"], name: "index_profiles_on_user_id"
 
   create_table "todo_items", force: :cascade do |t|
-    t.date     "due_date"
-    t.string   "title"
-    t.text     "description"
-    t.boolean  "completed"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.integer  "todo_list_id"
+    t.date "due_date"
+    t.string "title"
+    t.text "description"
+    t.boolean "completed"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "todo_list_id"
+    t.index ["todo_list_id"], name: "index_todo_items_on_todo_list_id"
   end
-
-  add_index "todo_items", ["todo_list_id"], name: "index_todo_items_on_todo_list_id"
 
   create_table "todo_lists", force: :cascade do |t|
-    t.string   "list_name"
-    t.date     "list_due_date"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.integer  "user_id"
+    t.string "list_name"
+    t.date "list_due_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_todo_lists_on_user_id"
   end
 
-  add_index "todo_lists", ["user_id"], name: "index_todo_lists_on_user_id"
-
   create_table "users", force: :cascade do |t|
-    t.string   "username"
-    t.string   "password_digest"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.string "username"
+    t.string "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
